@@ -2,25 +2,38 @@
 // Select size input
 
 // When size is submitted by the user, call makeGrid()
+var height,width,color,table,row,column;
 
-function makeGrid() {
+color = $ ("#colorPicker");
+
+
+$("form").submit(function(event){
+	//when it already have some table existed, remove them
+    $("tr").remove();
+    $("tb").remove();
+
+    //get the height and width from the enter
+    height = $("#input_height").val();
+    width = $("#input_width").val();
+    makeGrid(height,width);
+    event.preventDefault();
+});
+
+
+table = $("#pixel_canvas");
+function makeGrid(row,column) {
 
 // Your code goes here!
-var height,width,color,table;
+ for(var i = 0; i < row; i ++){
+	table.append("<tr></tr>");
+}
 
-height = $('#input_height').val();
- 
-width = $('#input_width').val();
-color = $('colorPicker').val();
-table = $('pixel_canvas');
-for(var i = 0; i < height; i ++){
-	var row = table.after('<tr></tr>');
-	for(var j = 0; j < width; j ++){
-		var column = row.after('<tb></tb>');
-		$('tb').click(function(){$(this).css('background-color','color')})
+ for(var j = 0; j < column; j ++){
+		$("tr").append("<tb></tb>");
 	}
+ 
 }
-  return false;
-}
-
-$(':submit').click(function(){makeGrid()});
+//background color for each cell,chosen by the user
+$( 'table' ).on( 'click', 'td', function( evt ) {
+    $( evt.target ).css( 'background', color.val() );
+});
