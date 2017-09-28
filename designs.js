@@ -7,7 +7,7 @@ var height,width,color,table;
 $("form").submit(function(event){
 	//when it already have some table existed, remove them
     $("tr").remove();
-    $("tb").remove();
+   
 
     //get the height and width from the enter
     height = $("#input_height").val();
@@ -20,11 +20,11 @@ $("form").submit(function(event){
 table = $("#pixel_canvas");
 function makeGrid(row,column) {
 
-// Your code goes here!
+  // Your code goes here!
  for(var i = 0; i < row; i ++){
-	table.append("<tr></tr>");
+	table.append("<tr>i</tr>");
 	for(var j = 0; j < column; j ++){
-		$("tr").append("<td></td>");
+		$("tr").last().append("<td></td>");
 	}
   }
 }
